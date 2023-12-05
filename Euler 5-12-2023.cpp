@@ -45,7 +45,8 @@ void euler(int v){
 		if (a[u][i])
 		{
 			S[t++]=i;
-		a[u][i]=a[i][u]=0;
+		a[u][i]--;
+			a[i][u]--;
 		k=1;
 		break;
 		}
