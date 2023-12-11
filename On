@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void DFS(int a[10][10], int m);
+void TimDinhTreo(int a[10][10], int m);
+
+int main(){
+    int a[10][10];
+    int m;
+    FILE *fp;
+    fp = fopen("C:\\Test.txt","r");
+    if(fp == NULL){
+        printf("\nKhong tim thay tap tin!");
+        exit(0);
+    }
+    else{
+        fscanf(fp,"%d",&m);
+        for(int i=1 ; i<=m ; i++){
+            for(int j=1 ; j<=m ; j++){
+                fscanf(fp,"%d",&a[i][j]);
+            }
+        }
+    }
+    fclose(fp);
+    printf("---Depth First Search---\n");
+    for(int i=1 ; i<=m ; i++){
+        for(int j=1 ; j<=m ; j++){
+            printf(" %d ",a[i][j]);
+        }
+        printf("\n");
+    }
+    DFS(a,m);
+    TimDinhTreo(a,m);
+}
+
+void DFS(int a[10][10], int m){
+    //... giữ nguyên phần code DFS của bạn ...
+}
+
+void TimDinhTreo(int a[10][10], int m){
+    int dinhTreo[10], soDinhTreo = 0;
+    for(int i=1; i<=m; i++){
+        int ke = 0;
+        for(int j=1; j<=m; j++){
+            if(a[i][j] != 0){
+                ke++;
+            }
+        }
+        if(ke == 0){
+            dinhTreo[soDinhTreo++] = i;
+        }
+    }
+    if(soDinhTreo > 0){
+        printf("\nCac dinh treo la: ");
+        for(int i=0; i<soDinhTreo; i++){
+            printf("%d ", dinhTreo[i]);
+        }
+    } else {
+        printf("\nKhong co dinh treo nao trong do thi.");
+    }
+}
